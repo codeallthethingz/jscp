@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.wonderant</groupId>
-	<artifactId>remote-copy</artifactId>
+	<artifactId>jscp</artifactId>
 	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
