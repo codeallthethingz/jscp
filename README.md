@@ -1,4 +1,4 @@
-remote-copy
+Jscp
 ===========
 
 SCP utility to tar a folder, zip it, and scp it somewhere, then unzip it.
