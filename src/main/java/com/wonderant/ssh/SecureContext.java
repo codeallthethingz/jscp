@@ -14,11 +14,16 @@ public class SecureContext {
 	private boolean trustAllHosts = false;
 	private String username;
 	private String host;
+        private int port;
 
 	public SecureContext(String pUsername, String pHost) {
-		super();
+		this(pUsername, pHost, 22);
+	}
+
+	public SecureContext(String pUsername, String pHost, int pPort) {
 		username = pUsername;
 		host = pHost;
+                port = pPort;
 	}
 
 	public String getPassword() {
@@ -66,6 +71,15 @@ public class SecureContext {
 		return this;
 	}
 
+	public int getPort() {
+		return port;
+	}
+
+	public SecureContext setPort(int pPort) {
+		port = pPort;
+		return this;
+	}
+
 	private UserInfo getUserInfo() {
 		return new UserInfo() {
 			public void showMessage(String pMessage) {
@@ -106,7 +120,7 @@ public class SecureContext {
 		if (getPrivateKeyFile() != null) {
 			jsch.addIdentity(getPrivateKeyFile().getAbsolutePath());
 		}
-		Session session = jsch.getSession(getUsername(), getHost(), 22);
+		Session session = jsch.getSession(getUsername(), getHost(), getPort());
 		session.setConfig(getConfig());
 		session.setUserInfo(getUserInfo());
 		return session;
